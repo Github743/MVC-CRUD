@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,10 @@ namespace MVCCRUD.Controllers
     {
         public ActionResult Index()
         {
+            if(!string.IsNullOrWhiteSpace(ConfigurationManager.ConnectionStrings["EmpConnection"].ConnectionString.ToString()))
+            {
+                ViewBag.Message = "Welcome to CRUD";
+            }
             return View();
         }
 
